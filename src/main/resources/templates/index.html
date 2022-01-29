@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2 th:inline="text">welcome [[${#httpServletRequest.remoteUser}]]</h2>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+
+    <h1>List User</h1>
+    <a href="new" sec:authorize="hasRole('ROLE_ADMIN')">Create New User</a>
+
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Action</th>
+
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${listUsers}">
+            <td th:text="${user.id}">Product ID</td>
+            <td th:text="${user.username}">Name</td>
+            <td th:text="${user.mobileNo}">Brand</td>
+            <td><a th:href="@{'/edit/' + ${user.id}}">Edit</a> </td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <a th:href="@{'/delete/' + ${user.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

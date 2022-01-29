@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Product</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Edit User</h1>
+		<br/>
+		<form action="#" th:action="@{/save}" th:object="${user}" method="post">
+			<table border="0" cellpadding="10">
+				<tr >
+					<td>User ID:</td>
+					<td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+				</tr>
+				<tr sec:authorize="hasRole('ROLE_ADMIN')">
+					<td>User Name:</td>
+					<td><input type="text" th:field="*{username}" /></td>
+				</tr>
+				<tr sec:authorize="hasRole('ROLE_ADMIN')">
+					<td>Password:</td>
+					<td><input type="text" th:field="*{password}" /></td>
+				</tr>
+				<tr>
+					<td>Mobile Number:</td>
+					<td><input type="text" th:field="*{mobileNo}" /></td>
+				</tr>
+				<tr sec:authorize="hasRole('ROLE_ADMIN')">
+					<td>Role:</td>
+					<td><input type="text" th:field="*{role}" /></td>
+				</tr>
+				<tr sec:authorize="hasRole('ROLE_ADMIN')">
+					<td>Enabled:</td>
+					<td><input type="text" th:field="*{enabled}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
