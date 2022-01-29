@@ -25,22 +25,6 @@ public class UserController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder ;
 
-    @RequestMapping("/login2")
-    public String login(Model model) {
-        MyUserDetails myUserDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = myUserDetails.getUser();
-
-        if (user.getRole().equals("ROLE_ADMIN")){
-            List<User> listUsers = userRepository.findAll();
-            model.addAttribute("listUsers", listUsers);
-        }else {
-            Long id = user.getId();
-            Optional<User> listUsers = userRepository.findById(id);
-            model.addAttribute("listUsers", listUsers.get());
-        }
-        return "index";
-    }
-
     @RequestMapping("/")
     public String viewHomePage(Model model) {
         MyUserDetails myUserDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
