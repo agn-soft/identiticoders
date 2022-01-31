@@ -14,7 +14,7 @@ public class User {
     private String password;
     private String role;
     private boolean enabled;
-    private int mobileNo;
+    private long mobileNo;
 
     public Long getId() {
         return id;
@@ -56,11 +56,11 @@ public class User {
         this.enabled = enabled;
     }
 
-    public int getMobileNo() {
+    public long getMobileNo() {
         return mobileNo;
     }
 
-    public void setMobileNo(int mobileNo) {
+    public void setMobileNo(long mobileNo) {
         this.mobileNo = mobileNo;
     }
 }
