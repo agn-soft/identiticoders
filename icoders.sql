@@ -29,7 +29,7 @@ CREATE TABLE `users` (
   `password` varchar(64) NOT NULL,
   `role` varchar(45) NOT NULL,
   `enabled` tinyint(4) DEFAULT NULL,
-  `mobile_no` int(20) DEFAULT NULL,
+  `mobile_no` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
